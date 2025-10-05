@@ -357,7 +357,7 @@
                     
                     <div id="orbital-info" style="margin-top:8px; padding: 8px; background:rgba(56,169,255,0.1); border-radius: 4px; font-size:0.85em;">
                 <div style="color:var(--accent-color); font-weight:600; margin-bottom:4px;">📊 Información Orbital</div>
-                        <div id="orbital-details" style="color:var(--text-color-secondary);"></div>
+                            <div id="orbital-details" style="color:var(--text-color-secondary);"></div>
                     </div>
                     
                     <div id="danger-assessment-minimal" style="margin-top:10px; padding: 8px; border-radius: 4px; text-align:center; font-weight:bold; transition: all 0.2s;"></div>
@@ -669,7 +669,7 @@ scene.add(ambientLight);
 const sunLight = new THREE.PointLight(0xFFF4D6, 25, 20000);
 sunLight.position.set(0,0,0);
 scene.add(sunLight);
-const starsTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_stars_milky_way.jpg', tuneTexture);
+const starsTex = textureLoader.load('8k_stars_milky_way.jpg', tuneTexture);
 const skybox = new THREE.Mesh(new THREE.SphereGeometry(16000, 64, 64), new THREE.MeshBasicMaterial({ map: starsTex, side: THREE.BackSide }));
 scene.add(skybox);
 const raycaster = new THREE.Raycaster();
@@ -701,20 +701,20 @@ renderer.domElement.addEventListener('pointerdown', (e)=>{
 });
 
 /* ======= CUERPOS CELESTES ======= */
-const sunTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_sun.jpg', tuneTexture);
+const sunTex = textureLoader.load('8k_sun.jpg', tuneTexture);
 const sun = new THREE.Mesh(new THREE.SphereGeometry(7,64,64), new THREE.MeshBasicMaterial({ map: sunTex }));
-sun.userData = { id:'sol', name:'Sol', info:`<p>Estrella G2V.</p>`, symbol:'☉', texture: 'https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_sun.jpg', isAsteroid: false };
+sun.userData = { id:'sol', name:'Sol', info:`<p>Estrella G2V.</p>`, symbol:'☉', texture: '8k_sun.jpg', isAsteroid: false };
 scene.add(sun);
 
 const planets = [];
 const planetData = [
-    { name: 'Mercurio', symbol: '☿', radius: 0.38, distance: 0.39, period: 87.97, color: 0x8c7853, info: 'Planeta más cercano al Sol' },
-    { name: 'Venus', symbol: '♀', radius: 0.95, distance: 0.72, period: 224.7, color: 0xffc649, info: 'Planeta más caliente del sistema solar' },
-    { name: 'Marte', symbol: '♂', radius: 0.53, distance: 1.52, period: 686.98, color: 0xc1440e, info: 'El planeta rojo' },
-    { name: 'Júpiter', symbol: '♃', radius: 11.2, distance: 5.20, period: 4332.59, color: 0xd8ca9d, info: 'El gigante gaseoso' },
-    { name: 'Saturno', symbol: '♄', radius: 9.45, distance: 9.58, period: 10759.22, color: 0xfad5a5, info: 'Planeta con anillos' },
-    { name: 'Urano', symbol: '♅', radius: 4.01, distance: 19.22, period: 30688.5, color: 0x4fd0e3, info: 'Planeta inclinado' },
-    { name: 'Neptuno', symbol: '♆', radius: 3.88, distance: 30.05, period: 60182, color: 0x4b70dd, info: 'El planeta azul' }
+    { name: 'Mercurio', symbol: '☿', radius: 0.38, distance: 0.39, period: 87.97, color: 0x8c7853, info: 'Planeta más cercano al Sol' },
+    { name: 'Venus', symbol: '♀', radius: 0.95, distance: 0.72, period: 224.7, color: 0xffc649, info: 'Planeta más caliente del sistema solar' },
+    { name: 'Marte', symbol: '♂', radius: 0.53, distance: 1.52, period: 686.98, color: 0xc1440e, info: 'El planeta rojo' },
+    { name: 'Júpiter', symbol: '♃', radius: 11.2, distance: 5.20, period: 4332.59, color: 0xd8ca9d, info: 'El gigante gaseoso' },
+    { name: 'Saturno', symbol: '♄', radius: 9.45, distance: 9.58, period: 10759.22, color: 0xfad5a5, info: 'Planeta con anillos' },
+    { name: 'Urano', symbol: '♅', radius: 4.01, distance: 19.22, period: 30688.5, color: 0x4fd0e3, info: 'Planeta inclinado' },
+    { name: 'Neptuno', symbol: '♆', radius: 3.88, distance: 30.05, period: 60182, color: 0x4b70dd, info: 'El planeta azul' }
 ];
 
 planetData.forEach((data, index) => {
@@ -758,8 +758,8 @@ planetData.forEach((data, index) => {
 
 const earthGroup = new THREE.Group(); 
 scene.add(earthGroup);
-const earthDayTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_earth_daymap.jpg', tuneTexture);
-const earthNightTex = textureLoader.load('https://threejs.org/examples/textures/planets/earth_lights_2048.png', tuneTexture);
+const earthDayTex = textureLoader.load('8k_earth_daymap.jpg', tuneTexture);
+const earthNightTex = textureLoader.load('8k_earth_nightmap.jpg', tuneTexture);
 earthDayTex.offset.x = 0.5; earthNightTex.offset.x = 0.5;
 earthDayTex.wrapS = THREE.RepeatWrapping; earthNightTex.wrapS = THREE.RepeatWrapping;
 const earthBlendMat = new THREE.ShaderMaterial({
@@ -768,16 +768,16 @@ const earthBlendMat = new THREE.ShaderMaterial({
     fragmentShader:`uniform sampler2D dayTex; uniform sampler2D nightTex; uniform vec3 lightPos; uniform float softness; uniform float dayBoost; varying vec3 vWorldPos; varying vec3 vWorldNormal; varying vec2 vUv; void main(){ vec3 N = normalize(vWorldNormal); vec3 L = normalize(lightPos - vWorldPos); float ndotl = max(dot(N, L), 0.0); float t = smoothstep(0.0, softness, ndotl); vec3 day = texture2D(dayTex, vUv).rgb; vec3 night = texture2D(nightTex, vUv).rgb; vec3 lit = clamp(day + day*(dayBoost*ndotl), 0.0, 1.0); vec3 color = mix(night, lit, t); gl_FragColor = vec4(color, 1.0); }`
 });
 const earth = new THREE.Mesh(new THREE.SphereGeometry(2,64,64), earthBlendMat);
-earth.userData = { id:'tierra', name:'Tierra', info:`<p>Inclinación axial: <span class="valor">23.44°</span></p>`, symbol:'♁', texture: 'https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_earth_daymap.jpg', isAsteroid: false };
-const cloudTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_earth_clouds.jpg', tuneTexture);
+earth.userData = { id:'tierra', name:'Tierra', info:`<p>Inclinación axial: <span class="valor">23.44°</span></p>`, symbol:'♁', texture: '8k_earth_daymap.jpg', isAsteroid: false };
+const cloudTex = textureLoader.load('8k_earth_clouds.jpg', tuneTexture);
 const cloudMesh = new THREE.Mesh(new THREE.SphereGeometry(2.02,64,64), new THREE.MeshStandardMaterial({ map:cloudTex, transparent:true, opacity:0.26, alphaTest:0.1 }));
 earth.add(cloudMesh);
 earthGroup.add(earth);
-const moonTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_moon.jpg', tuneTexture);
+const moonTex = textureLoader.load('8k_moon.jpg', tuneTexture);
 const moon = new THREE.Mesh(new THREE.SphereGeometry(0.5,64,64), new THREE.MeshStandardMaterial({ map:moonTex, roughness:0.9, emissive: 0xffffff, emissiveIntensity: 0.05 }));
-moon.userData = { id:'luna', name:'Luna', info:`<p>Periodo sideral: <span class="valor">27.321661 días</span></p>`, symbol:'☾', texture: 'https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/8k_moon.jpg', isAsteroid: false };
+moon.userData = { id:'luna', name:'Luna', info:`<p>Periodo sideral: <span class="valor">27.321661 días</span></p>`, symbol:'☾', texture: '8k_moon.jpg', isAsteroid: false };
 earthGroup.add(moon);
-const asteroidTex = textureLoader.load('https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/Asteroide4k.jpg', tuneTexture);
+const asteroidTex = textureLoader.load('Asteroide4k.jpg', tuneTexture);
 clickableObjects.push(sun, earth, moon);
 
 /* ======= ETIQUETAS 3D Y ÓRBITAS ======= */
@@ -1348,7 +1348,7 @@ function addSimulatedAsteroid(keplerianElements, diameterMeters, dangerInfo){
     const diameterText = diameterMeters < 1000 ? `${diameterMeters} m` : `${(diameterMeters / 1000).toFixed(2)} km`;
     const periodDays = 2 * Math.PI * Math.sqrt(Math.pow(keplerianElements.a * DANGER_CONSTANTS.AU, 3) / DANGER_CONSTANTS.MU_SUN) / 86400;
 
-    marker.userData = { id:`sim_${Date.now()}`, name: simName, info: `<p><strong>Órbita Simulada</strong></p><p>Diámetro: <span class="valor">${diameterText}</span></p><p>Período: <span class="valor">${periodDays.toFixed(1)} días</span></p>`, texture: 'https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/Asteroidemodelo2d.jpg', isAsteroid: true };
+    marker.userData = { id:`sim_${Date.now()}`, name: simName, info: `<p><strong>Órbita Simulada</strong></p><p>Diámetro: <span class="valor">${diameterText}</span></p><p>Período: <span class="valor">${periodDays.toFixed(1)} días</span></p>`, texture: 'Asteroidemodelo2d.jpg', isAsteroid: true };
     const asteroidLabel = createLabel(simName);
     marker.add(asteroidLabel);
     
@@ -1466,7 +1466,7 @@ function addOrUpgradeRealAsteroid(neoId, el, neoDetails, hazardous = false) {
         const marker = new THREE.Mesh(createIrregularAsteroidGeometry(), new THREE.MeshStandardMaterial({ map: asteroidTex, roughness: 0.8, metalness: 0.2, color: hazardous ? 0xff8888 : 0xffffff }));
         scene.add(marker); clickableObjects.push(marker);
         const label = createLabel(neoDetails.name); marker.add(label);
-        marker.userData = { id: `neo_${neoId}`, name: neoDetails.name, texture: 'https://raw.githubusercontent.com/Stardew-Valley-Mods/SDV-SpaceCore/main/SpaceCore.Example/assets/Asteroidemodelo2d.jpg', isAsteroid: true };
+        marker.userData = { id: `neo_${neoId}`, name: neoDetails.name, texture: 'Asteroidemodelo2d.jpg', isAsteroid: true };
         record = { userDataId: neoId, name: neoDetails.name, marker, kind: 'real', hazardous, label };
         asteroids.push(record);
     }
@@ -1614,19 +1614,47 @@ function calculateDistanceToEarth(asteroid, timeWeeks) {
     return asteroidPos.distanceTo(earthPos) / 1000;
 }
 
+// --- NUEVAS FUNCIONES PARA EL GRÁFICO ---
+function formatDistance(km) {
+    if (km >= 1e6) return `${(km / 1e6).toFixed(1)}M km`;
+    if (km >= 1e3) return `${(km / 1e3).toFixed(0)}k km`;
+    return `${km.toFixed(0)} km`;
+}
+
+function getNiceAxisBounds(min, max, numTicks = 5) {
+    const range = max - min;
+    if (range === 0) return { niceMin: min - 1, niceMax: max + 1, tickStep: 1 };
+    const rawStep = range / (numTicks - 1);
+    const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+    const res = rawStep / magnitude;
+    let tickStep;
+    if (res > 5) tickStep = 10 * magnitude;
+    else if (res > 2) tickStep = 5 * magnitude;
+    else if (res > 1) tickStep = 2 * magnitude;
+    else tickStep = magnitude;
+    const niceMin = Math.floor(min / tickStep) * tickStep;
+    const niceMax = Math.ceil(max / tickStep) * tickStep;
+    return { niceMin, niceMax, tickStep };
+}
+// --- FIN NUEVAS FUNCIONES ---
+
 function generateDistancePlot(asteroid) {
     currentAsteroid = asteroid;
     const canvas = distancePlotCanvas;
     const ctx = canvas.getContext('2d');
     resizeCanvasToContainer();
     const width = canvas.width, height = canvas.height;
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-    ctx.fillRect(0, 0, width, height);
-
-    const margin = 50;
-    const plotWidth = width - 2 * margin;
-    const plotHeight = height - 2 * margin;
     
+    // --- ESTILOS DEL GRÁFICO ---
+    ctx.fillStyle = 'rgba(10, 15, 20, 0.8)';
+    ctx.fillRect(0, 0, width, height);
+    ctx.strokeStyle = 'rgba(156, 179, 209, 0.2)'; // color secundario para grid
+    ctx.fillStyle = 'rgba(156, 179, 209, 0.8)'; // color secundario para texto
+    ctx.font = '11px Roboto';
+    const margin = { top: 20, right: 20, bottom: 40, left: 60 };
+    const plotWidth = width - margin.left - margin.right;
+    const plotHeight = height - margin.top - margin.bottom;
+
     const dataPoints = [];
     const startWeek = currentTimeOffset;
     const endWeek = currentTimeOffset + currentTimeScale;
@@ -1635,21 +1663,74 @@ function generateDistancePlot(asteroid) {
         const distance = calculateDistanceToEarth(asteroid, week);
         if (distance !== null) dataPoints.push({ week, distance });
     }
-    if(dataPoints.length === 0) return;
+    if(dataPoints.length < 2) return;
 
     const minDistance = Math.min(...dataPoints.map(p => p.distance));
     const maxDistance = Math.max(...dataPoints.map(p => p.distance));
     
+    const yAxis = getNiceAxisBounds(minDistance, maxDistance, 6);
+    const xAxisTicks = 5;
+
+    // --- DIBUJAR EJES Y GUÍAS ---
+    ctx.lineWidth = 1;
+    // Guías horizontales (Y)
+    for (let val = yAxis.niceMin; val <= yAxis.niceMax; val += yAxis.tickStep) {
+        const y = margin.top + plotHeight - ((val - yAxis.niceMin) / (yAxis.niceMax - yAxis.niceMin)) * plotHeight;
+        ctx.beginPath();
+        ctx.moveTo(margin.left, y);
+        ctx.lineTo(width - margin.right, y);
+        ctx.stroke();
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(formatDistance(val), margin.left - 8, y);
+    }
+    // Guías verticales (X)
+    for (let i = 0; i <= xAxisTicks; i++) {
+        const week = startWeek + (i / xAxisTicks) * (endWeek - startWeek);
+        const x = margin.left + (i / xAxisTicks) * plotWidth;
+        ctx.beginPath();
+        ctx.moveTo(x, margin.top);
+        ctx.lineTo(x, height - margin.bottom);
+        ctx.stroke();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        const yearLabel = (week / 52).toFixed(1);
+        ctx.fillText(`${yearLabel}a`, x, height - margin.bottom + 8);
+    }
+
+    // --- TÍTULOS DE EJES ---
+    ctx.save();
+    ctx.translate(15, margin.top + plotHeight / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText('Distancia (km)', 0, 0);
+    ctx.restore();
+    ctx.textAlign = 'center';
+    ctx.fillText('Tiempo (Años desde hoy)', margin.left + plotWidth / 2, height - 10);
+
+    // --- DIBUJAR LÍNEA DE DATOS ---
     ctx.strokeStyle = '#38a9ff';
     ctx.lineWidth = 2;
     ctx.beginPath();
     dataPoints.forEach((p, i) => {
-        const x = margin + ((p.week - startWeek) / currentTimeScale) * plotWidth;
-        const y = height - margin - ((p.distance - minDistance) / (maxDistance - minDistance)) * plotHeight;
+        const x = margin.left + ((p.week - startWeek) / (endWeek - startWeek)) * plotWidth;
+        const y = margin.top + plotHeight - ((p.distance - yAxis.niceMin) / (yAxis.niceMax - yAxis.niceMin)) * plotHeight;
         if (i === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
     });
     ctx.stroke();
+    
+    // --- DIBUJAR MARCADOR DE TIEMPO ACTUAL ---
+    const elapsedWeeks = (simulationDate.getTime() - new Date().getTime()) / (7 * 864e5);
+    if (elapsedWeeks >= startWeek && elapsedWeeks <= endWeek) {
+        const xNow = margin.left + ((elapsedWeeks - startWeek) / (endWeek - startWeek)) * plotWidth;
+        ctx.strokeStyle = 'var(--warning-color)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(xNow, margin.top);
+        ctx.lineTo(xNow, height - margin.bottom);
+        ctx.stroke();
+    }
 
     distancePlotContainer.style.display = 'block';
 }
@@ -1658,8 +1739,8 @@ function updateTimeScale() { currentTimeScale = parseInt(document.getElementById
 function updateTimeOffset() { currentTimeOffset = parseInt(document.getElementById('time-offset-slider').value); document.getElementById('time-offset-display').textContent = `${currentTimeOffset} semanas`; regeneratePlot(); }
 function resetTimeView() { currentTimeOffset = 0; currentTimeScale = 260; document.getElementById('time-offset-slider').value = 0; document.getElementById('time-scale-selector').value = 260; document.getElementById('time-offset-display').textContent = '0 semanas'; regeneratePlot(); }
 function centerOnCurrentTime() {
-    const currentWeek = (simulationDate.getTime() - J2000_EPOCH_MS) / (7 * 24 * 60 * 60 * 1000);
-    currentTimeOffset = Math.max(0, currentWeek - currentTimeScale / 2);
+    const elapsedWeeks = (simulationDate.getTime() - new Date().getTime()) / (7 * 864e5);
+    currentTimeOffset = Math.max(0, Math.round(elapsedWeeks - currentTimeScale / 2));
     document.getElementById('time-offset-slider').value = currentTimeOffset;
     document.getElementById('time-offset-display').textContent = `${Math.round(currentTimeOffset)} semanas`;
     regeneratePlot();
